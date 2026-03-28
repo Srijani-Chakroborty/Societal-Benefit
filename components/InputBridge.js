@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { Mic, Image as ImageIcon, Send, Loader2, X, AlertTriangle, FileText, Zap } from 'lucide-react';
+import { Mic, Image as ImageIcon, Send, Loader2, X, AlertTriangle, FileText, Zap, MapPin } from 'lucide-react';
 import styles from '../app/components.module.css';
 
 /**
@@ -12,6 +12,7 @@ import styles from '../app/components.module.css';
  */
 export default function InputBridge({ onResult }) {
   const [text, setText] = useState('');
+  const [location, setLocation] = useState('');
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -81,7 +82,7 @@ export default function InputBridge({ onResult }) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          text,
+          text: location ? `${text}\n\n[REPORTED LOCATION: ${location}]` : text,
           imageBase64: image ? image.data : null,
           mimeType: image ? image.mimeType : null,
         }),
@@ -125,14 +126,45 @@ export default function InputBridge({ onResult }) {
         Gemini processes it all.
       </p>
 
+      {/* Location input */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        padding: '0.6rem 0.875rem',
+        background: 'rgba(0, 0, 0, 0.25)',
+        border: '1px solid var(--border-color)',
+        borderRadius: 'var(--radius-md)',
+        transition: 'var(--transition-fast)',
+      }}>
+        <MapPin size={16} color="var(--accent-blue)" style={{ flexShrink: 0 }} />
+        <input
+          type="text"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          placeholder="Enter incident location (e.g., 123 Main St, New York)"
+          aria-label="Incident location"
+          disabled={loading}
+          style={{
+            flex: 1,
+            background: 'transparent',
+            border: 'none',
+            outline: 'none',
+            color: 'var(--text-primary)',
+            fontFamily: 'inherit',
+            fontSize: '0.85rem',
+          }}
+        />
+      </div>
+
       {error && (
-        <div className={styles.errorBanner}>
-          <AlertTriangle size={16} style={{ flexShrink: 0 }} />
+        <div className={styles.errorBanner} role="alert" aria-live="assertive">
+          <AlertTriangle size={16} style={{ flexShrink: 0 }} aria-hidden="true" />
           <span>{error}</span>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <form onSubmit={handleSubmit} aria-label="Emergency input form" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
 
         {/* Textarea with drag-drop zone */}
         <div

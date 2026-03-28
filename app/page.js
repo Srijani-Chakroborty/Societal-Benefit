@@ -12,7 +12,7 @@ export default function Home() {
     <div style={{ minHeight: '100vh', position: 'relative', zIndex: 1 }}>
 
       {/* ===== HERO NAVBAR ===== */}
-      <nav style={{
+      <nav aria-label="Primary navigation" style={{
         maxWidth: '1280px',
         margin: '0 auto',
         padding: '1.5rem 2rem',
@@ -61,8 +61,8 @@ export default function Home() {
             fontWeight: 600,
             color: '#06d6a0',
           }}>
-            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#06d6a0', boxShadow: '0 0 6px #06d6a0' }}></span>
-            System Active
+            <span aria-hidden="true" style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#06d6a0', boxShadow: '0 0 6px #06d6a0' }}></span>
+            <span>System Active</span>
           </span>
         </div>
       </nav>
@@ -148,7 +148,7 @@ export default function Home() {
       </section>
 
       {/* ===== MAIN CONTENT GRID ===== */}
-      <main style={{
+      <main id="main-content" role="main" aria-label="Emergency triage interface" style={{
         maxWidth: '1280px',
         margin: '0 auto',
         padding: '0 2rem 4rem',
@@ -216,7 +216,7 @@ export default function Home() {
       </main>
 
       {/* ===== FOOTER ===== */}
-      <footer style={{
+      <footer role="contentinfo" style={{
         maxWidth: '1280px',
         margin: '0 auto',
         padding: '2rem',
@@ -225,7 +225,7 @@ export default function Home() {
         color: 'var(--text-muted)',
         fontSize: '0.8rem',
       }}>
-        Built with Google Gemini AI · Lifeline Core © 2026
+        <p>Built with Google Gemini AI · Lifeline Core © 2026</p>
       </footer>
     </div>
   );

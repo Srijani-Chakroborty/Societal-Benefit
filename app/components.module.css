@@ -1,0 +1,347 @@
+/* ========================================
+   BUTTONS
+   ======================================== */
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.875rem 1.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #fff;
+  background: linear-gradient(135deg, #4f8cff 0%, #6366f1 100%);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(79, 140, 255, 0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.02em;
+}
+
+.btnPrimary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.5s ease;
+}
+
+.btnPrimary:hover::before {
+  left: 100%;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(79, 140, 255, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.btnPrimary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(79, 140, 255, 0.3);
+}
+
+.btnPrimary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ========================================
+   EMERGENCY BUTTON
+   ======================================== */
+.btnEmergency {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.875rem 1.75rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+  background: linear-gradient(135deg, #ff4d6a 0%, #e11d48 100%);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(255, 77, 106, 0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.btnEmergency:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 77, 106, 0.4);
+}
+
+/* ========================================
+   SECONDARY/GHOST BUTTON
+   ======================================== */
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btnGhost:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   FORM ELEMENTS
+   ======================================== */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.textarea {
+  width: 100%;
+  padding: 1rem 1.125rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  transition: var(--transition);
+  resize: vertical;
+  min-height: 140px;
+}
+
+.textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.15);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* ========================================
+   CARD SYSTEM
+   ======================================== */
+.card {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  letter-spacing: -0.01em;
+}
+
+/* ========================================
+   BADGE SYSTEM
+   ======================================== */
+.badge {
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.badgePulse {
+  animation: pulse 2s infinite;
+}
+
+.badgeMedical {
+  background: rgba(6, 214, 160, 0.12);
+  color: var(--accent-green);
+  border: 1px solid rgba(6, 214, 160, 0.25);
+}
+
+.badgePolice {
+  background: rgba(79, 140, 255, 0.12);
+  color: var(--accent-blue);
+  border: 1px solid rgba(79, 140, 255, 0.25);
+}
+
+.badgeFire {
+  background: rgba(255, 159, 67, 0.12);
+  color: var(--accent-orange);
+  border: 1px solid rgba(255, 159, 67, 0.25);
+}
+
+.badgeCritical {
+  background: rgba(255, 77, 106, 0.15);
+  color: var(--accent-red);
+  border: 1px solid rgba(255, 77, 106, 0.3);
+}
+
+/* ========================================
+   STAT CARD
+   ======================================== */
+.statCard {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 1rem 1.125rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.statCard:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================
+   STEP ITEM (for action lists)
+   ======================================== */
+.stepItem {
+  background: rgba(6, 214, 160, 0.06);
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--accent-green);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  transition: var(--transition-fast);
+}
+
+.stepItem:hover {
+  background: rgba(6, 214, 160, 0.1);
+  transform: translateX(4px);
+}
+
+/* ========================================
+   RESOURCE CHIP
+   ======================================== */
+.resourceChip {
+  background: rgba(79, 140, 255, 0.08);
+  border: 1px solid rgba(79, 140, 255, 0.2);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-full);
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: var(--accent-blue);
+  transition: var(--transition-fast);
+}
+
+.resourceChip:hover {
+  background: rgba(79, 140, 255, 0.15);
+  border-color: rgba(79, 140, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   ERROR BANNER
+   ======================================== */
+.errorBanner {
+  background: rgba(255, 77, 106, 0.08);
+  border: 1px solid rgba(255, 77, 106, 0.25);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1rem;
+  color: var(--accent-red);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* ========================================
+   MEDICAL INTEL BOX
+   ======================================== */
+.medicalBox {
+  background: rgba(255, 77, 106, 0.04);
+  padding: 1rem 1.125rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 77, 106, 0.15);
+  border-left: 3px solid var(--accent-red);
+  transition: var(--transition-fast);
+}
+
+.medicalBox:hover {
+  background: rgba(255, 77, 106, 0.06);
+}
+
+/* ========================================
+   IMAGE PREVIEW
+   ======================================== */
+.imagePreview {
+  position: relative;
+  width: fit-content;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.imagePreviewImg {
+  height: 100px;
+  object-fit: cover;
+  display: block;
+}
+
+.imagePreviewClose {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.imagePreviewClose:hover {
+  background: rgba(255, 77, 106, 0.8);
+}
